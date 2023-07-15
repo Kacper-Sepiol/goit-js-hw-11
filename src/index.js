@@ -23,6 +23,10 @@ const fetchImg = async () => {
     return;
   }
 
+  if (data.hits.length >= 1) {
+    Notiflix.Notify.success('loaded!');
+  }
+
   const images = data.hits.map(image => ({
     webformatURL: image.webformatURL,
     largeImageURL: image.largeImageURL,
