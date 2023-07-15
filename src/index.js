@@ -1,6 +1,7 @@
 'use strict';
 
 import Notiflix from 'notiflix';
+import axios from 'axios';
 
 const form = document.querySelector('#search-form');
 const formInput = document.querySelector('#form-input');
@@ -9,8 +10,8 @@ const gallery = document.querySelector('.gallery');
 const apiKey = '38274981-bf681d1339bb2c6c927a948b3';
 let searchPhoto = '';
 
-const fetchImg = async value => {
-  const response = await fetch(
+const fetchImg = async () => {
+  const response = await axios.get(
     `https://pixabay.com/api/?key=${apiKey}&q=${searchPhoto}&image_type=photo&orientation=horizontal&safesearch=true`
   );
   const data = await response.json();
