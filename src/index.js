@@ -21,6 +21,8 @@ const fetchImg = async () => {
   );
   const data = await response.json();
 
+  clearGallery(data);
+
   if (data.hits.length === 0) {
     Notiflix.Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
@@ -65,9 +67,15 @@ const fetchImg = async () => {
     .join('');
 
   gallery.innerHTML = markup;
-
   return images;
 };
+
+function clearGallery(data) {
+  if (data.hits.length === 0) {
+    gallery.innerHTML = '';
+    loadMoreButton.style.display = 'none';
+  }
+}
 
 form.addEventListener('submit', event => {
   event.preventDefault();
@@ -81,5 +89,4 @@ form.addEventListener('submit', event => {
 
 loadMoreButton.addEventListener('click', () => {
   page++;
-  console.log(page);
 });
