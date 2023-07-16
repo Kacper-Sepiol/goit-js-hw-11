@@ -11,7 +11,7 @@ const apiKey = '38274981-bf681d1339bb2c6c927a948b3';
 let searchPhoto = '';
 
 const fetchImg = async () => {
-  const response = await axios.get(
+  const response = await fetch(
     `https://pixabay.com/api/?key=${apiKey}&q=${searchPhoto}&image_type=photo&orientation=horizontal&safesearch=true`
   );
   const data = await response.json();
