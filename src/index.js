@@ -1,7 +1,6 @@
 'use strict';
 
 import Notiflix from 'notiflix';
-import axios from 'axios';
 
 const form = document.querySelector('#search-form');
 const formInput = document.querySelector('#form-input');
@@ -11,15 +10,18 @@ loadMoreButton.style.display = 'none';
 
 let page = 1;
 const perPage = 40;
+let totalHits = 0;
+let searchPhoto = '';
 
 const apiKey = '38274981-bf681d1339bb2c6c927a948b3';
-let searchPhoto = '';
 
 const fetchImg = async () => {
   const response = await fetch(
     `https://pixabay.com/api/?key=${apiKey}&q=${searchPhoto}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${perPage}&page=${page}`
   );
   const data = await response.json();
+
+  totalHits = data.totalHits;
 
   clearGallery(data);
 
@@ -66,7 +68,16 @@ const fetchImg = async () => {
     })
     .join('');
 
-  gallery.innerHTML = markup;
+  gallery.innerHTML += markup;
+
+  if (totalHits <= page * perPage) {
+    loadMoreButton.style.display = 'none';
+    otiflix.Notify.info(
+      "We're sorry, but you've reached the end of search results."
+    );
+  } else {
+    loadMoreButton.style.display = 'block';
+  }
 
   return images;
 };
@@ -82,14 +93,13 @@ form.addEventListener('submit', event => {
   event.preventDefault();
 
   searchPhoto = formInput.value;
+  page = 1;
   fetchImg(searchPhoto);
   searchPhoto = '';
-  loadMoreButton.style.display = 'block';
+  loadMoreButton.style.display = 'none';
 });
 
 loadMoreButton.addEventListener('click', () => {
   page++;
   fetchImg(searchPhoto);
-  searchPhoto = '';
-  return;
 });
