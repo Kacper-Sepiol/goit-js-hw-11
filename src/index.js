@@ -13,6 +13,8 @@ let page = 1;
 const perPage = 40;
 let totalHits = 0;
 let searchPhoto = '';
+let result = '';
+let i = 1;
 
 const apiKey = '38274981-bf681d1339bb2c6c927a948b3';
 
@@ -94,10 +96,21 @@ form.addEventListener('submit', event => {
   event.preventDefault();
 
   searchPhoto = formInput.value;
+
+  if (i === 1) {
+    result = searchPhoto;
+  }
+  i = 2;
+
+  if (searchPhoto != result) {
+    gallery.innerHTML = '';
+  }
+
   page = 1;
   fetchImg(searchPhoto);
   searchPhoto = '';
   loadMoreButton.style.display = 'none';
+  result = formInput.value;
 });
 
 loadMoreButton.addEventListener('click', () => {
