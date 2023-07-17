@@ -73,7 +73,7 @@ const fetchImg = async () => {
 
   if (totalHits <= page * perPage) {
     loadMoreButton.style.display = 'none';
-    otiflix.Notify.info(
+    Notiflix.Notify.info(
       "We're sorry, but you've reached the end of search results."
     );
   } else {
