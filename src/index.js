@@ -44,35 +44,32 @@ const fetchImg = async () => {
     downloads: image.downloads,
   }));
 
-  return images;
-};
-
-function renderImg() {
   const markup = images
     .map(images => {
       return `<div class="photo-card">
-  <img src="${images.webformatURL}" alt="${images.tags}" loading="lazy" class="img"/>
-  <div class="info">
-    <p class="info-item">
-      <b>${images.likes}: Likes</b>
-    </p>
-    <p class="info-item">
-      <b>${images.views}: Views</b>
-    </p>
-    <p class="info-item">
-      <b>${images.comments}: Comments</b>
-    </p>
-    <p class="info-item">
-      <b>${images.downloads}: Downloads</b>
-    </p>
-  </div>
+<img src="${images.webformatURL}" alt="${images.tags}" loading="lazy" class="img"/>
+<div class="info">
+  <p class="info-item">
+    <b>${images.likes}: Likes</b>
+  </p>
+  <p class="info-item">
+    <b>${images.views}: Views</b>
+  </p>
+  <p class="info-item">
+    <b>${images.comments}: Comments</b>
+  </p>
+  <p class="info-item">
+    <b>${images.downloads}: Downloads</b>
+  </p>
+</div>
 </div>`;
     })
     .join('');
 
   gallery.innerHTML = markup;
-  return gallery;
-}
+
+  return images;
+};
 
 function clearGallery(data) {
   if (data.hits.length === 0) {

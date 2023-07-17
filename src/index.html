@@ -41,20 +41,49 @@
       body {
         background-color: rgb(235, 230, 230);
       }
+
+      #form-input {
+        border-radius: 5px;
+        border: 0;
+        width: 180px;
+        height: 50px;
+        font-weight: 500;
+        padding: 10px;
+      }
+
+      .search-button {
+        border-radius: 8px;
+        border: 0;
+        width: 80px;
+        height: 40px;
+        margin-left: 15px;
+        font-weight: 500;
+      }
     </style>
   </head>
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
     <!-- <include src="./partials/example.html"></include> -->
     <form class="search-form" id="search-form">
-      <input
-        type="text"
-        name="searchQuery"
-        autocomplete="off"
-        placeholder="Search images..."
-        id="form-input"
-      />
-      <button type="submit">Search</button>
+      <div
+        style="
+          width: auto;
+          height: 70px;
+          background-color: rgb(72, 113, 141);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+          id="form-input"
+        />
+        <button type="submit" class="search-button">Search</button>
+      </div>
 
       <div class="gallery"></div>
       <button type="button" class="load-more">Load more</button>
