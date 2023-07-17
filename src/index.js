@@ -108,7 +108,7 @@ form.addEventListener('submit', event => {
 
   page = 1;
   fetchImg(searchPhoto);
-  searchPhoto = '';
+  formInput.value = '';
   loadMoreButton.style.display = 'none';
   result = formInput.value;
 });
