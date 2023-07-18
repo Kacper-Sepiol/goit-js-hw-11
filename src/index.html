@@ -6,9 +6,98 @@
     <title>Page title</title>
     <link rel="stylesheet" href="./sass/index.scss" />
     <script type="module" src="./index.js"></script>
+
+    <style>
+      .gallery {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .photo-card {
+        width: auto;
+        height: auto;
+        background-color: whitesmoke;
+        margin-top: 30px;
+        margin-left: 50px;
+      }
+
+      .photo-card:hover {
+        box-shadow: 1px 13px 64px -26px rgba(66, 68, 90, 1);
+        transition: box-shadow 0.5s ease-out;
+      }
+
+      .img {
+        width: 500px;
+        height: 300px;
+      }
+
+      .info-item {
+        font-size: 24px;
+        text-align: center;
+      }
+
+      body {
+        background-color: rgb(235, 230, 230);
+      }
+
+      #form-input {
+        border-radius: 5px;
+        border: 0;
+        width: 180px;
+        height: 50px;
+        font-weight: 500;
+        padding: 10px;
+      }
+
+      .search-button {
+        border-radius: 8px;
+        border: 0;
+        width: 80px;
+        height: 40px;
+        margin-left: 15px;
+        font-weight: 500;
+      }
+
+      .load-more {
+        width: 150px;
+        height: 50px;
+        border-radius: 10px;
+        font-weight: 500;
+        border: 0;
+        background-color: rgb(171, 223, 207);
+      }
+    </style>
   </head>
   <body>
     <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <!-- <include src="./partials/example.html"></include> -->
+    <form class="search-form" id="search-form">
+      <div
+        style="
+          width: auto;
+          height: 70px;
+          background-color: rgb(72, 113, 141);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+          id="form-input"
+        />
+        <button type="submit" class="search-button">Search</button>
+      </div>
+
+      <div class="gallery"></div>
+      <div style="display: flex; justify-content: center; margin-top: 50px">
+        <button type="button" class="load-more">Load more</button>
+      </div>
+    </form>
   </body>
 </html>
