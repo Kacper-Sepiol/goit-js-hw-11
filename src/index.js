@@ -2,6 +2,8 @@
 
 import Notiflix from 'notiflix';
 import axios from 'axios';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const form = document.querySelector('#search-form');
 const formInput = document.querySelector('#form-input');
@@ -15,6 +17,7 @@ let totalHits = 0;
 let searchPhoto = '';
 let result = '';
 let i = 1;
+var instance = new SimpleLightbox('.gallery a');
 
 const apiKey = '38274981-bf681d1339bb2c6c927a948b3';
 
@@ -38,6 +41,7 @@ const fetchImg = async () => {
   if (data.hits.length >= 1) {
     Notiflix.Notify.success('loaded!');
   }
+  instance.refresh();
 
   const images = data.hits.map(image => ({
     webformatURL: image.webformatURL,
