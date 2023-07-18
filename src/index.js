@@ -17,7 +17,7 @@ let totalHits = 0;
 let searchPhoto = '';
 let result = '';
 let i = 1;
-var lightbox = new SimpleLightbox('.gallery a');
+var lightbox;
 
 const apiKey = '38274981-bf681d1339bb2c6c927a948b3';
 
@@ -76,8 +76,6 @@ const fetchImg = async () => {
 
   gallery.innerHTML += markup;
 
-  lightbox.refresh();
-
   if (totalHits <= page * perPage) {
     loadMoreButton.style.display = 'none';
     Notiflix.Notify.info(
@@ -85,6 +83,12 @@ const fetchImg = async () => {
     );
   } else {
     loadMoreButton.style.display = 'block';
+  }
+
+  if (!lightbox) {
+    lightbox = new SimpleLightbox('.gallery .photo-card .img');
+  } else {
+    lightbox.refresh();
   }
 
   return images;
