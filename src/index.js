@@ -22,10 +22,10 @@ var lightbox;
 const apiKey = '38274981-bf681d1339bb2c6c927a948b3';
 
 const fetchImg = async () => {
-  const response = await fetch(
+  const response = await axios.get(
     `https://pixabay.com/api/?key=${apiKey}&q=${searchPhoto}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${perPage}&page=${page}`
   );
-  const data = await response.json();
+  const data = await response.data;
 
   totalHits = data.totalHits;
 
