@@ -17,7 +17,7 @@ let totalHits = 0;
 let searchPhoto = '';
 let result = '';
 let i = 1;
-var instance = new SimpleLightbox('.gallery a');
+var lightbox = new SimpleLightbox('.gallery a');
 
 const apiKey = '38274981-bf681d1339bb2c6c927a948b3';
 
@@ -41,7 +41,6 @@ const fetchImg = async () => {
   if (data.hits.length >= 1) {
     Notiflix.Notify.success('loaded!');
   }
-  instance.refresh();
 
   const images = data.hits.map(image => ({
     webformatURL: image.webformatURL,
@@ -76,6 +75,8 @@ const fetchImg = async () => {
     .join('');
 
   gallery.innerHTML += markup;
+
+  lightbox.refresh();
 
   if (totalHits <= page * perPage) {
     loadMoreButton.style.display = 'none';
