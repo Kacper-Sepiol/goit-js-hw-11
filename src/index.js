@@ -55,7 +55,7 @@ const fetchImg = async () => {
   const markup = images
     .map(images => {
       return `<div class="photo-card">
-<img src="${images.webformatURL}" alt="${images.tags}" loading="lazy" class="img"/>
+<a href="${images.largeImageURL}"><img src="${images.webformatURL}" data-title="${images.tags} loading="lazy" class="img"/></a>
 <div class="info">
   <p class="info-item">
     <b>${images.likes}: Likes</b>
@@ -86,7 +86,7 @@ const fetchImg = async () => {
   }
 
   if (!lightbox) {
-    lightbox = new SimpleLightbox('.gallery .photo-card .img');
+    lightbox = new SimpleLightbox('.gallery a');
   } else {
     lightbox.refresh();
   }
